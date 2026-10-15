@@ -16,14 +16,26 @@ public class Testclass_04082026 {
 	}
 
 	private static void method4() {
+		Comparator<Employee> salaryComparator = (e1, e2) -> {
+			double d1Salary = e1.salary();
+			double e2Salary = e2.salary();
+			return Double.compare(d1Salary, e2Salary);
+//			return 0;
+		};
+		
+		Comparator<Employee> salaryCompareSimple = 
+				Comparator.comparingDouble(e->e.salary());
+		
 		List<Employee> employees = List.of(
 			    new Employee("Alice", "Sales", 60000, 26),
 			    new Employee("Bob", "Sales", 82000, 34),
 			    new Employee("Charlie", "Sales", 75000, 29)
 			);
-		employees.stream()
-		.map(items->items.salary())
-		.sorted(Comparator.reverseOrder());
+		Employee result=employees.stream()
+//		.max(Comparator.comparing(Employee::salary))
+				.max(salaryCompareSimple)
+		.orElseThrow();
+		System.out.println("Employees "+result);
 	}
 
 	private static void method3() {
@@ -34,8 +46,8 @@ public class Testclass_04082026 {
 			);
 		Double result=employees.stream()
 		.filter(items->items.department().equals("Engineering"))
-		.map(items->items.salary())
-		.mapToDouble(items->items)
+		.mapToDouble(Employee::salary)
+//		.mapToDouble(items->items)
 		.sum();
 		System.out.println("sum of "+result);
 	}

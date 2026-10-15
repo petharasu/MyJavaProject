@@ -11,10 +11,27 @@ public class TemplatePrinter {
 		
 		//method1();
 		//method2();
-		//method3();
-		reverseEachword();
+//		method3();
+//		reverseEachword();
+		method4();
 		
 
+	}
+
+	private static void method4() {
+		
+			String input="i love india";
+			System.out.println(
+			input.chars()
+			.mapToObj(eachchar->(char)eachchar)
+			.filter(eachchar->(eachchar!='a' && eachchar!='e'
+					&& eachchar!='i'&& eachchar!='o'&& eachchar!='u'))
+			.map(String::valueOf)
+			.collect(Collectors.joining("")));
+			
+		
+		
+		
 	}
 
 	private static void reverseEachword() {
@@ -33,13 +50,12 @@ public class TemplatePrinter {
 	private static void method3() {
 		String inputValue="welcome     to @ the fss for #inteview";
 		String output=inputValue.chars()
-		.mapToObj(eachitem-> (char) eachitem)
-		.filter(eachchar-> (eachchar!='#' && eachchar!='@'))
-		 .map(String::valueOf)
-         .collect(Collectors.joining(""))
-         .replaceAll("\\s+", " ")
-         .trim();
-       System.out.println(output);  
+		.mapToObj(items-> (char) items) 
+		.filter(eachchar-> eachchar!='@' && eachchar!='#')
+		.map(String::valueOf)
+		.collect(Collectors.joining(""))
+		.replaceAll("\\s+"," ");
+		IO.println("the final output is "+ output);
 		
 	}
 

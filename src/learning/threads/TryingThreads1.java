@@ -8,7 +8,7 @@ public class TryingThreads1 {
 		//Thirdway();//race condition
 		//Fourthway();// synchronization
 		Sixthway();
-	}
+}
 
 	private static void Sixthway() throws InterruptedException {
 		DefineThreads t1=new DefineThreads();

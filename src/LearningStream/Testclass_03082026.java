@@ -7,9 +7,20 @@ import java.util.stream.Collectors;
 public class Testclass_03082026 {
 
 	public static void main(String[] args) {
+		String a="""
+				hi hello
+				
+					good
+					{
+					"name":"peth",
+					"id":"17744"
+					}
+				""";
+		System.out.println("mutli line "+a);
 //		method1();//product of all integers->need to check
 //		method2();//Integer Summary Statistics
 //		method3();//Join Strings with Separator
+//		method4();//14,15 pending
 		
 
 	}
@@ -17,9 +28,10 @@ public class Testclass_03082026 {
 	private static void method3() {
 		String result="";
 		List<String> fruits = List.of("Apple", "Banana", "Cherry", "Date");
-		System.out.println("\""+
-		fruits.stream()
-		.collect(Collectors.joining(","))+"\"");
+		System.out.println(fruits.stream()
+		.collect(Collectors.joining(",","\"","\"")));
+		
+		
 
 		
 		
@@ -36,11 +48,16 @@ public class Testclass_03082026 {
 
 	private static void method1() {
 		List<Integer> numbers = List.of(1, 2, 3, 4, 5);
-		int sum=1;
-		for(int i=0;i<numbers.size();i++) {
-			sum=sum*numbers.get(i);
-		}
-		System.out.println("final value " + sum);
+		var result=numbers.stream()
+		.mapToInt(item->item)
+		.reduce(1, (a,b)->a*b);//a-incoming b-existing
+		System.out.println(result);
+	
+//		int sum=1;
+//		for(int i=0;i<numbers.size();i++) {
+//			sum=sum*numbers.get(i);
+//		}
+//		System.out.println("final value " + sum);
 	}
 	
 
